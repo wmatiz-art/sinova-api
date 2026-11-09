@@ -2,6 +2,9 @@
 
 CRUD del módulo de empleados de **SINOVA (Sistema de Liquidación de Nómina)** con **Spring Boot 3.5**, **Spring Data JPA (Hibernate)** y **MySQL**, sobre la base de datos `sinova` del proyecto.
 
+## Pantalla web
+Al ejecutar el proyecto, `http://localhost:8080/` abre la pantalla **Empleados** con el estilo de SINOVA (listado, búsqueda por documento, perfil, registro, edición y eliminación). Está en `src/main/resources/static` y consume la API.
+
 ## Endpoints
 | Método | URL | Acción |
 |---|---|---|
@@ -21,7 +24,7 @@ Validaciones: tipo de documento (CC, CE, TI, PA), documento numérico de 6 a 12 
 1. Tener la base `sinova` creada en MySQL 8.
 2. Copiar `src/main/resources/db-local.properties.example` como `db-local.properties` y escribir la clave de MySQL.
 3. Abrir en NetBeans (File > Open Project) y ejecutar `SinovaApiApplication` (Run File).
-4. Probar en Postman: `http://localhost:8080/api/empleados`
+4. Abrir `http://localhost:8080/` en el navegador o probar en Postman: `http://localhost:8080/api/empleados`
 
 Tecnologías: Java 25 · Spring Boot 3.5.7 · Spring Web · Spring Data JPA · Validation · MySQL Connector/J · Lombok · DevTools · NetBeans 31.
 

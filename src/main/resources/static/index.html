@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SINOVA - Empleados</title>
+    <link rel="stylesheet" href="css/sinova.css">
+</head>
+<body>
+    <header class="barra">
+        <div class="marca">SINOVA <span>Sistema de Liquidación de Nómina</span></div>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#" class="activo">Empleados</a>
+            <a href="#">Novedades</a>
+            <a href="#">Liquidación</a>
+            <a href="#">Reportes</a>
+        </nav>
+    </header>
+
+    <main class="contenido">
+        <!-- Vista 1: listado de empleados (HU-02) -->
+        <section id="vistaListado">
+            <div class="titulo-fila">
+                <h1>Empleados</h1>
+                <button class="btn" id="btnNuevo">+ Registrar empleado</button>
+            </div>
+            <form class="buscador" id="formBuscar">
+                <input type="text" id="txtBuscar" placeholder="Buscar por número de documento">
+                <button type="submit" class="btn">Buscar</button>
+                <button type="button" class="btn-sec" id="btnTodos">Ver todos</button>
+            </form>
+            <div id="mensaje" class="mensaje oculto"></div>
+            <div class="tarjeta">
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Tipo</th><th>Documento</th><th>Nombre completo</th>
+                            <th>Teléfono</th><th>Correo</th><th>Estado</th><th>Acciones</th></tr>
+                    </thead>
+                    <tbody id="tablaEmpleados"></tbody>
+                </table>
+                <p class="total" id="total"></p>
+            </div>
+        </section>
+
+        <!-- Vista 2: detalle del empleado (HU-02) -->
+        <section id="vistaDetalle" class="oculto">
+            <h1>Perfil del empleado</h1>
+            <div class="tarjeta detalle" id="detalle"></div>
+            <div class="acciones-form">
+                <button class="btn-sec" data-volver>Volver al listado</button>
+                <button class="btn" id="btnEditarDetalle">Editar</button>
+            </div>
+        </section>
+
+        <!-- Vista 3: registrar / editar (HU-01 y HU-03) -->
+        <section id="vistaFormulario" class="oculto">
+            <h1 id="tituloForm">Registrar empleado</h1>
+            <form class="tarjeta formulario" id="formEmpleado" novalidate>
+                <input type="hidden" id="idEmpleado">
+                <input type="hidden" id="idBanco">
+                <div class="campo">
+                    <label for="tipoDocumento">Tipo de documento <b>*</b></label>
+                    <select id="tipoDocumento">
+                        <option value="">Seleccione...</option>
+                        <option value="CC">CC - Cédula de ciudadanía</option>
+                        <option value="CE">CE - Cédula de extranjería</option>
+                        <option value="TI">TI - Tarjeta de identidad</option>
+                        <option value="PA">PA - Pasaporte</option>
+                    </select>
+                    <small class="error" data-error="tipoDocumento"></small>
+                </div>
+                <div class="campo">
+                    <label for="numeroDocumento">Número de documento <b>*</b></label>
+                    <input type="text" id="numeroDocumento">
+                    <small class="error" data-error="numeroDocumento"></small>
+                </div>
+                <div class="campo">
+                    <label for="nombres">Nombres <b>*</b></label>
+                    <input type="text" id="nombres">
+                    <small class="error" data-error="nombres"></small>
+                </div>
+                <div class="campo">
+                    <label for="apellidos">Apellidos <b>*</b></label>
+                    <input type="text" id="apellidos">
+                    <small class="error" data-error="apellidos"></small>
+                </div>
+                <div class="campo">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input type="date" id="fechaNacimiento">
+                    <small class="error" data-error="fechaNacimiento"></small>
+                </div>
+                <div class="campo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono">
+                    <small class="error" data-error="telefono"></small>
+                </div>
+                <div class="campo">
+                    <label for="correo">Correo</label>
+                    <input type="text" id="correo">
+                    <small class="error" data-error="correo"></small>
+                </div>
+                <div class="campo">
+                    <label for="numeroCuenta">Número de cuenta</label>
+                    <input type="text" id="numeroCuenta">
+                    <small class="error" data-error="numeroCuenta"></small>
+                </div>
+                <div class="campo ancho">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion">
+                    <small class="error" data-error="direccion"></small>
+                </div>
+                <div class="campo ancho check">
+                    <input type="checkbox" id="estado" checked>
+                    <label for="estado">Empleado activo</label>
+                </div>
+                <div id="mensajeForm" class="mensaje ancho oculto"></div>
+                <div class="acciones-form ancho">
+                    <button type="button" class="btn-sec" data-volver>Cancelar</button>
+                    <button type="submit" class="btn" id="btnGuardar">Guardar</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Confirmación para eliminar (HU-04) -->
+    <div id="dialogo" class="fondo-dialogo oculto">
+        <div class="dialogo">
+            <h2>Eliminar empleado</h2>
+            <p id="textoDialogo"></p>
+            <div class="acciones-form">
+                <button class="btn-sec" id="btnCancelarEliminar">Cancelar</button>
+                <button class="btn-peligro" id="btnConfirmarEliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/empleados.js"></script>
+</body>
+</html>
