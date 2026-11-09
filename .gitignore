@@ -1,0 +1,10 @@
+target/
+nbproject/private/
+nb-configuration.xml
+nbactions.xml
+.idea/
+*.iml
+.vscode/
+HELP.md
+src/main/resources/db-local.properties
+*.log

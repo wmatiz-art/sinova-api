@@ -1,0 +1,2 @@
+# Copiar como db-local.properties y escribir la clave de MySQL
+spring.datasource.password=
